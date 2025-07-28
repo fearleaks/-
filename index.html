@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</title>
   <style>
-    /* Existing styles */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -25,6 +24,58 @@
       margin-bottom: 0.2em;
       font-weight: bold;
     }
+    .popup {
+      background: #222;
+      padding: 15px 25px;
+      border: 1px solid #555;
+      display: inline-block;
+      margin-bottom: 30px;
+      font-size: 1.1em;
+      border-radius: 10px;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      background-color: #00c6ff;
+      border: none;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #007eaa;
+    }
+    .section {
+      margin: 50px auto;
+      max-width: 800px;
+      background: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 15px;
+    }
+    .section h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 0.9em;
+      text-align: center;
+    }
+    footer a {
+      color: #00c6ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    /* Search Bar Styles */
     .search-bar {
       position: relative;
       max-width: 500px;
@@ -62,20 +113,6 @@
     .categories a:hover {
       background-color: #00c6ff;
     }
-    /* Top-right link */
-    #getBundle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #00c6ff;
-      padding: 10px 20px;
-      color: white;
-      font-size: 1.1em;
-      cursor: pointer;
-      border-radius: 8px;
-      text-decoration: none;
-      z-index: 1000;
-    }
   </style>
 </head>
 <body>
@@ -89,7 +126,6 @@
     <div class="categories" id="categories">
       <a href="#" onclick="openCartoonBundles()">Cartoon Bundles</a>
       <a href="#" onclick="openRealisticPacks()">Realistic Packs</a>
-      <a href="#" onclick="openRealisticReshade()">Realistic Reshade</a>
     </div>
   </div>
 
@@ -123,20 +159,6 @@
           <li><a href="https://drive.google.com/file/d/1K2cs_6g4rdTqlQyL2OoqQJzIs8T2yVN9/view?usp=sharing" target="_blank">Realistic Pack 3 - Google Drive</a></li>
           <li><a href="https://mega.nz/file/8rsXjQBD#eKNUxossan8CQsIRAtp1rEInUPvsuHtJzGq3Dox-bfc" target="_blank">Realistic Pack 4 - Mega</a></li>
         </ul>
-      `;
-    }
-
-    // Function to show Realistic Reshade content
-    function openRealisticReshade() {
-      document.getElementById('categoryContent').innerHTML = `
-        <h2>Realistic Reshade</h2>
-        <ul>
-          <li><a href="https://drive.google.com/file/d/1yGoCclem74To2BJ1pwyHh9Gsdr2tPMok/view?usp=sharing" target="_blank">Reshade 1 - Google Drive</a></li>
-          <li><a href="https://drive.google.com/file/d/1_Ffbyd0siDCIeL7nTRl93s61t3fFQPrt/view" target="_blank">Reshade 2 - Google Drive</a></li>
-          <li><a href="https://drive.google.com/drive/folders/1J7ke5aRdQof-72Ok3WEX--kqysb97Ss-" target="_blank">Reshade 3 - Google Drive</a></li>
-          <li><a href="https://www.mediafire.com/file/7yta8plwgtb3oun/moneyoversocietygp.rar/file" target="_blank">Reshade 4 - MediaFire</a></li>
-          <li><a href="https://drive.google.com/file/d/19U3mebO54mFlJoLNciniC3HzqJ-cA_N3/view?usp=sharing" target="_blank">Reshade 5 - Google Drive</a></li>
-        </ul>
         <p>Password for some files: <strong>antrax12</strong></p>
       `;
     }
@@ -149,5 +171,62 @@
     });
   </script>
 
+  <div class="overlay">
+    <div class="popup">
+      🎉 Welcome to <strong>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</strong> — Your #1 Spot for Free FiveM Graphics, Tools & FX!
+    </div>
+
+    <h1>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</h1>
+    <p>Elite Graphics, ReShades, Tools, and More — All Free for the FiveM Community.</p>
+
+    <div id="verifyGate">
+      <h2>🔒 Access Locked</h2>
+      <p>To access our graphics packs, you must verify inside the <strong>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</strong> Discord.</p>
+      <label>
+        <input type="checkbox" id="verifyCheck" />
+        I am verified in the Discord server
+      </label>
+      <br />
+      <button id="downloadBtn" disabled>
+        ✅ Join & Verify
+      </button>
+    </div>
+
+    <div class="section">
+      <h2>🛠️ How to Install</h2>
+      <p>All files come with README.txt, but basic install is just drag & drop into your FiveM directory or mods folder. ReShade files need ReShade installed first.</p>
+    </div>
+
+    <div class="section">
+      <h2>📸 Previews</h2>
+      <p>Sneak peek of what's inside — visual enhancers, blood FX, sounds, UI mods, and more!</p>
+      <img src="https://i.imgur.com/5yHfhsE.png" alt="Preview" style="width:100%; border-radius: 10px; margin-top: 20px;" />
+    </div>
+
+    <div class="section">
+      <h2>👑 Credits</h2>
+      <p><strong>Owner:</strong> Clickey<br />
+         <strong>Co-Owner:</strong> JJ</p>
+    </div>
+
+    <footer>
+      &copy; 2025 ꜰͥᴇͣᴀͫʀʟɛǟӄֆ. All rights reserved. Join our Discord: <a href="https://discord.gg/85YgY334mg" target="_blank" rel="noopener noreferrer">discord.gg/85YgY334mg</a>
+    </footer>
+  </div>
+
+  <script>
+    const checkbox = document.getElementById("verifyCheck");
+    const button = document.getElementById("downloadBtn");
+
+    checkbox.addEventListener("change", () => {
+      button.disabled = !checkbox.checked;
+      button.style.backgroundColor = checkbox.checked ? '#facc15' : '#999';
+      button.style.cursor = checkbox.checked ? 'pointer' : 'not-allowed';
+    });
+
+    button.addEventListener("click", () => {
+      window.location.href = "https://discord.gg/85YgY334mg";
+    });
+  </script>
 </body>
 </html>

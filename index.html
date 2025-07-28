@@ -13,17 +13,17 @@
       color: white;
       overflow-x: hidden;
     }
-
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 60px 30px;
+      min-height: 100vh;
+      text-align: center;
+    }
     h1 {
       font-size: 3em;
       margin-bottom: 0.2em;
       font-weight: bold;
     }
-
-    .overlay {
-      display: none; /* No longer displaying the overlay */
-    }
-
     .popup {
       background: #222;
       padding: 15px 25px;
@@ -33,7 +33,6 @@
       font-size: 1.1em;
       border-radius: 10px;
     }
-
     .btn {
       display: inline-block;
       margin: 10px;
@@ -47,11 +46,9 @@
       transition: background 0.3s;
       text-decoration: none;
     }
-
     .btn:hover {
       background-color: #007eaa;
     }
-
     .section {
       margin: 50px auto;
       max-width: 800px;
@@ -59,12 +56,10 @@
       padding: 30px;
       border-radius: 15px;
     }
-
     .section h2 {
       font-size: 2em;
       margin-bottom: 15px;
     }
-
     footer {
       margin-top: 60px;
       padding: 20px;
@@ -72,66 +67,56 @@
       font-size: 0.9em;
       text-align: center;
     }
-
     footer a {
       color: #00c6ff;
       text-decoration: none;
       font-weight: bold;
     }
-
     footer a:hover {
       text-decoration: underline;
     }
-
-    /* Search Bar Styles with Background */
-    .search-bar {
-      position: relative;
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 10px;
-      border-radius: 5px;
-      background-image: url('https://i.imgur.com/rinn2vI.jpeg'); /* Matches the background image */
-      background-size: cover;
-      background-position: center;
-      background-blend-mode: darken;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 12px;
-      font-size: 1.2em;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      background-color: rgba(255, 255, 255, 0.8); /* Lighter background for input */
-      color: #333;
-    }
-
-    .categories {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      border-radius: 5px;
-      padding: 10px;
-      box-sizing: border-box;
-    }
-
-    .categories a {
-      display: block;
+    #verifyGate {
+      background: rgba(0,0,0,0.4);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 40px;
       color: white;
-      text-decoration: none;
-      padding: 8px;
-      margin-bottom: 5px;
-      border-radius: 5px;
+      max-width: 600px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    .categories a:hover {
-      background-color: #00c6ff;
+    #verifyGate h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
     }
-
-    /* Fixed Button at the Top Right */
+    #verifyGate p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    #verifyGate label {
+      display: inline-block;
+      margin-bottom: 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #verifyGate input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.3);
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    #downloadBtn {
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #999;
+      color: black;
+      cursor: not-allowed;
+      transition: background-color 0.3s ease;
+    }
+    /* Top-right link */
     #getBundle {
       position: fixed;
       top: 20px;
@@ -145,73 +130,66 @@
       text-decoration: none;
       z-index: 1000;
     }
-
+    /* Popup Styles */
+    #bundlePopup {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      padding: 25px;
+      border-radius: 10px;
+      color: white;
+      max-width: 80%;
+      z-index: 9999;
+    }
+    #bundlePopup h2 {
+      margin-bottom: 15px;
+    }
+    #bundlePopup ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    #bundlePopup li {
+      margin-bottom: 10px;
+    }
+    #closePopup {
+      background-color: #ff4d4d;
+      padding: 8px 15px;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+    }
   </style>
 </head>
 <body>
-
   <!-- Button to trigger the bundle popup -->
   <a href="#" id="getBundle">Get ꜰͥᴇͣᴀͫʀ BUNDLE FOR FREE</a>
 
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" id="search" placeholder="Search Bundles..." onclick="showCategories()" />
-    <div class="categories" id="categories">
-      <a href="#" onclick="openCartoonBundles()">Cartoon Bundles</a>
-      <a href="#" onclick="openRealisticPacks()">Realistic Packs</a>
-    </div>
+  <!-- Bundle Popup -->
+  <div id="bundlePopup">
+    <h2>Get the ꜰͥᴇͣᴀͫʀ Bundle:</h2>
+    <ul>
+      <li><strong>Reshade:</strong> <a href="https://www.mediafire.com/file/jdeonx77nqsgpff/i+fear.ini/file" target="_blank">Download Reshade</a></li>
+      <li><strong>Graphic Pack:</strong> <a href="https://www.mediafire.com/file/8blsgaynj04sxyb/ꜰͥᴇͣᴀͫʀ+GP.rar/file" target="_blank">Download Graphic Pack</a></li>
+      <li><strong>KillFX:</strong> <a href="https://www.mediafire.com/file/8blsgaynj04sxyb/ꜰͥᴇͣᴀͫʀ+GP.rar/file" target="_blank">Download KillFX</a></li>
+      <li><strong>F8 Commands:</strong>
+        <pre>bind keyboard "3" "me ¦ ~r~POPING ~s~THIS PERK BITCH¦"</pre>
+        <pre>bind keyboard "R" "me ¦ ~r~RELOADING ~s~ BITCH¦"</pre>
+        <pre>bind keyboard "e" "e think5"</pre>
+        <pre>bind keyboard "e" "me ¦ ~r~ ꜰͥᴇͣᴀͫʀ | 𝙄𝙉𝘾 ~s~Did It To You¦"</pre>
+      </li>
+    </ul>
+    <button id="closePopup">Close</button>
   </div>
 
-  <!-- Category Content -->
-  <div id="categoryContent" style="text-align:center; color:white; margin-top: 50px;"></div>
+  <div class="overlay">
+    <div class="popup">
+      🎉 Welcome to <strong>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</strong> — Your #1 Spot for Free FiveM Graphics, Tools & FX!
+    </div>
 
-  <script>
-    // Function to display categories
-    function showCategories() {
-      document.getElementById('categories').style.display = 'block';
-    }
-
-    // Function to show Cartoon Bundles content
-    function openCartoonBundles() {
-      document.getElementById('categoryContent').innerHTML = `
-        <h2>Cartoon Bundles</h2>
-        <ul>
-          <li><a href="https://gofile.io/d/l0IlbY" target="_blank">Cartoon Bundle 1 - Gofile</a></li>
-          <li><a href="https://www.mediafire.com/file/4q15v4jordzhfgj/bundle+1.rar/file" target="_blank">Cartoon Bundle 1 - MediaFire</a></li>
-        </ul>
-      `;
-    }
-
-    // Function to show Realistic Packs content
-    function openRealisticPacks() {
-      document.getElementById('categoryContent').innerHTML = `
-        <h2>Realistic Packs</h2>
-        <ul>
-          <li><a href="https://drive.google.com/file/d/1Sr-PSEAZYaXpjG-ov1ABTZ-HwSd2vB6W/view?usp=sharing" target="_blank">Realistic Pack 1 - Google Drive</a></li>
-          <li><a href="https://drive.google.com/drive/folders/1kcWM_tW6ofriADP0HXLk5HzgrQy4yxnE" target="_blank">Realistic Pack 2 - Google Drive</a></li>
-          <li><a href="https://drive.google.com/file/d/1K2cs_6g4rdTqlQyL2OoqQJzIs8T2yVN9/view?usp=sharing" target="_blank">Realistic Pack 3 - Google Drive</a></li>
-          <li><a href="https://mega.nz/file/8rsXjQBD#eKNUxossan8CQsIRAtp1rEInUPvsuHtJzGq3Dox-bfc" target="_blank">Realistic Pack 4 - Mega</a></li>
-          <li><a href="https://drive.google.com/file/d/1yGoCclem74To2BJ1pwyHh9Gsdr2tPMok/view?usp=sharing" target="_blank">Realistic Pack 5 - Google Drive</a></li>
-          <li><a href="https://drive.google.com/file/d/1_Ffbyd0siDCIeL7nTRl93s61t3fFQPrt/view" target="_blank">Realistic Pack 6 - Google Drive</a></li>
-          <li><a href="https://drive.google.com/drive/folders/1J7ke5aRdQof-72Ok3WEX--kqysb97Ss-" target="_blank">Realistic Pack 7 - Google Drive</a></li>
-          <li><a href="https://www.mediafire.com/file/7yta8plwgtb3oun/moneyoversocietygp.rar/file" target="_blank">Realistic Pack 8 - MediaFire</a></li>
-          <li><a href="https://drive.google.com/file/d/19U3mebO54mFlJoLNciniC3HzqJ-cA_N3/view?usp=sharing" target="_blank">Realistic Pack 9 - Google Drive</a></li>
-          <li><a href="https://drive.google.com/file/d/1yHQp934kNFhi-MrJ0DF7QT5zeEfBMrop/view" target="_blank">Realistic Pack 10 - Google Drive</a></li>
-          <li><a href="https://www.mediafire.com/file/7hdd1t72v4yh2ub/gp.rar/file" target="_blank">Realistic Pack 11 - MediaFire</a></li>
-        </ul>
-        <p><strong>Password for some files:</strong> <strong>antrax12</strong> (Required for protected links, like Mega and some Google Drive files).</p>
-      `;
-    }
-
-    // Close the category dropdown if clicked outside
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.search-bar')) {
-        document.getElementById('categories').style.display = 'none';
-      }
-    });
-  </script>
-
-  <div class="section">
     <h1>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</h1>
     <p>Elite Graphics, ReShades, Tools, and More — All Free for the FiveM Community.</p>
 
@@ -253,6 +231,17 @@
   <script>
     const checkbox = document.getElementById("verifyCheck");
     const button = document.getElementById("downloadBtn");
+    const popup = document.getElementById("bundlePopup");
+    const closePopup = document.getElementById("closePopup");
+
+    document.getElementById("getBundle").addEventListener("click", (e) => {
+      e.preventDefault();
+      popup.style.display = "block";
+    });
+
+    closePopup.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
 
     checkbox.addEventListener("change", () => {
       button.disabled = !checkbox.checked;
@@ -264,6 +253,5 @@
       window.location.href = "https://discord.gg/85YgY334mg";
     });
   </script>
-
 </body>
 </html>

@@ -116,6 +116,20 @@
       cursor: not-allowed;
       transition: background-color 0.3s ease;
     }
+    /* Top-right bundle button */
+    #getBundle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #00c6ff;
+      padding: 10px 20px;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+      z-index: 1000;
+    }
     /* Top-left watermark button */
     #watermarkBtn {
       position: fixed;
@@ -168,10 +182,8 @@
   <!-- Watermark Button -->
   <button id="watermarkBtn">Download Watermark</button>
 
-  <!-- Button to trigger the bundle popup -->
-  <a href="#" id="getBundle">Get ꜰͥᴇͣᴀͫʀ BUNDLE FOR FREE</a>
-
   <!-- Bundle Popup -->
+  <a href="#" id="getBundle">Get ꜰͥᴇͣᴀͫʀ BUNDLE FOR FREE</a>
   <div id="bundlePopup">
     <h2>Get the ꜰͥᴇͣᴀͫʀ Bundle:</h2>
     <ul>
@@ -238,6 +250,7 @@
     const closePopup = document.getElementById("closePopup");
     const watermarkBtn = document.getElementById("watermarkBtn");
 
+    // Bundle Popup
     document.getElementById("getBundle").addEventListener("click", (e) => {
       e.preventDefault();
       popup.style.display = "block";
@@ -245,6 +258,14 @@
 
     closePopup.addEventListener("click", () => {
       popup.style.display = "none";
+    });
+
+    // Watermark download
+    watermarkBtn.addEventListener("click", () => {
+      const link = document.createElement('a');
+      link.href = 'https://i.imgur.com/rinn2vI.jpeg';
+      link.download = 'watermark.jpeg';
+      link.click();
     });
 
     checkbox.addEventListener("change", () => {
@@ -255,13 +276,6 @@
 
     button.addEventListener("click", () => {
       window.location.href = "https://discord.gg/85YgY334mg";
-    });
-
-    watermarkBtn.addEventListener("click", () => {
-      const link = document.createElement('a');
-      link.href = 'https://i.imgur.com/rinn2vI.jpeg';
-      link.download = 'watermark.jpeg';
-      link.click();
     });
   </script>
 </body>

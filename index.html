@@ -13,17 +13,20 @@
       color: white;
       overflow-x: hidden;
     }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      font-weight: bold;
+    }
+
     .overlay {
       background-color: rgba(0, 0, 0, 0.75);
       padding: 60px 30px;
       min-height: 100vh;
       text-align: center;
     }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
-      font-weight: bold;
-    }
+
     .popup {
       background: #222;
       padding: 15px 25px;
@@ -33,6 +36,7 @@
       font-size: 1.1em;
       border-radius: 10px;
     }
+
     .btn {
       display: inline-block;
       margin: 10px;
@@ -46,9 +50,11 @@
       transition: background 0.3s;
       text-decoration: none;
     }
+
     .btn:hover {
       background-color: #007eaa;
     }
+
     .section {
       margin: 50px auto;
       max-width: 800px;
@@ -56,10 +62,12 @@
       padding: 30px;
       border-radius: 15px;
     }
+
     .section h2 {
       font-size: 2em;
       margin-bottom: 15px;
     }
+
     footer {
       margin-top: 60px;
       padding: 20px;
@@ -67,14 +75,17 @@
       font-size: 0.9em;
       text-align: center;
     }
+
     footer a {
       color: #00c6ff;
       text-decoration: none;
       font-weight: bold;
     }
+
     footer a:hover {
       text-decoration: underline;
     }
+
     /* Search Bar Styles */
     .search-bar {
       position: relative;
@@ -84,6 +95,7 @@
       border-radius: 5px;
       background-color: rgba(255, 255, 255, 0.8);
     }
+
     .search-bar input {
       width: 100%;
       padding: 12px;
@@ -91,6 +103,7 @@
       border: 1px solid #ddd;
       border-radius: 5px;
     }
+
     .categories {
       display: none;
       position: absolute;
@@ -102,6 +115,7 @@
       padding: 10px;
       box-sizing: border-box;
     }
+
     .categories a {
       display: block;
       color: white;
@@ -110,9 +124,26 @@
       margin-bottom: 5px;
       border-radius: 5px;
     }
+
     .categories a:hover {
       background-color: #00c6ff;
     }
+
+    /* Fixed Button at the Top Right */
+    #getBundle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #00c6ff;
+      padding: 10px 20px;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+      z-index: 1000;
+    }
+
   </style>
 </head>
 <body>
@@ -228,5 +259,8 @@
       window.location.href = "https://discord.gg/85YgY334mg";
     });
   </script>
+
 </body>
 </html>
+
+ 

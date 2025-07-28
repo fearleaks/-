@@ -20,11 +20,9 @@
       font-weight: bold;
     }
 
+    /* Remove the black overlay */
     .overlay {
-      background-color: rgba(0, 0, 0, 0.75);
-      padding: 60px 30px;
-      min-height: 100vh;
-      text-align: center;
+      display: none; /* Removed the overlay to stop the black logo box effect */
     }
 
     .popup {
@@ -90,10 +88,10 @@
     .search-bar {
       position: relative;
       max-width: 500px;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 10px;
       border-radius: 5px;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(0, 0, 0, 0.6); /* Darker background to blend better */
     }
 
     .search-bar input {
@@ -102,6 +100,8 @@
       font-size: 1.2em;
       border: 1px solid #ddd;
       border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.8); /* Lighter background for input */
+      color: #333;
     }
 
     .categories {
@@ -263,4 +263,3 @@
 </body>
 </html>
 
- 

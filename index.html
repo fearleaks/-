@@ -166,7 +166,7 @@
 </head>
 <body>
   <!-- Watermark Button -->
-  <a href="https://i.imgur.com/rinn2vI.jpeg" download id="watermarkBtn">Download Watermark</a>
+  <button id="watermarkBtn">Download Watermark</button>
 
   <!-- Button to trigger the bundle popup -->
   <a href="#" id="getBundle">Get ꜰͥᴇͣᴀͫʀ BUNDLE FOR FREE</a>
@@ -236,6 +236,7 @@
     const button = document.getElementById("downloadBtn");
     const popup = document.getElementById("bundlePopup");
     const closePopup = document.getElementById("closePopup");
+    const watermarkBtn = document.getElementById("watermarkBtn");
 
     document.getElementById("getBundle").addEventListener("click", (e) => {
       e.preventDefault();
@@ -254,6 +255,13 @@
 
     button.addEventListener("click", () => {
       window.location.href = "https://discord.gg/85YgY334mg";
+    });
+
+    watermarkBtn.addEventListener("click", () => {
+      const link = document.createElement('a');
+      link.href = 'https://i.imgur.com/rinn2vI.jpeg';
+      link.download = 'watermark.jpeg';
+      link.click();
     });
   </script>
 </body>

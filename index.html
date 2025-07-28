@@ -75,7 +75,6 @@
     footer a:hover {
       text-decoration: underline;
     }
-    /* Verification Gate Styles */
     #verifyGate {
       background: rgba(0,0,0,0.4);
       padding: 20px;
@@ -117,9 +116,75 @@
       cursor: not-allowed;
       transition: background-color 0.3s ease;
     }
+    /* Top-right link */
+    #getBundle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #00c6ff;
+      padding: 10px 20px;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+      z-index: 1000;
+    }
+    /* Popup Styles */
+    #bundlePopup {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      padding: 25px;
+      border-radius: 10px;
+      color: white;
+      max-width: 80%;
+      z-index: 9999;
+    }
+    #bundlePopup h2 {
+      margin-bottom: 15px;
+    }
+    #bundlePopup ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    #bundlePopup li {
+      margin-bottom: 10px;
+    }
+    #closePopup {
+      background-color: #ff4d4d;
+      padding: 8px 15px;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+    }
   </style>
 </head>
 <body>
+  <!-- Button to trigger the bundle popup -->
+  <a href="#" id="getBundle">Get ꜰͥᴇͣᴀͫʀ BUNDLE FOR FREE</a>
+
+  <!-- Bundle Popup -->
+  <div id="bundlePopup">
+    <h2>Get the ꜰͥᴇͣᴀͫʀ Bundle:</h2>
+    <ul>
+      <li><strong>Reshade:</strong> <a href="https://www.mediafire.com/file/jdeonx77nqsgpff/i+fear.ini/file" target="_blank">Download Reshade</a></li>
+      <li><strong>Graphic Pack:</strong> <a href="https://www.mediafire.com/file/8blsgaynj04sxyb/ꜰͥᴇͣᴀͫʀ+GP.rar/file" target="_blank">Download Graphic Pack</a></li>
+      <li><strong>KillFX:</strong> <a href="https://www.mediafire.com/file/8blsgaynj04sxyb/ꜰͥᴇͣᴀͫʀ+GP.rar/file" target="_blank">Download KillFX</a></li>
+      <li><strong>F8 Commands:</strong>
+        <pre>bind keyboard "3" "me ¦ ~r~POPING ~s~THIS PERK BITCH¦"</pre>
+        <pre>bind keyboard "R" "me ¦ ~r~RELOADING ~s~ BITCH¦"</pre>
+        <pre>bind keyboard "e" "e think5"</pre>
+        <pre>bind keyboard "e" "me ¦ ~r~ ꜰͥᴇͣᴀͫʀ | 𝙄𝙉𝘾 ~s~Did It To You¦"</pre>
+      </li>
+    </ul>
+    <button id="closePopup">Close</button>
+  </div>
+
   <div class="overlay">
     <div class="popup">
       🎉 Welcome to <strong>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</strong> — Your #1 Spot for Free FiveM Graphics, Tools & FX!
@@ -128,7 +193,6 @@
     <h1>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</h1>
     <p>Elite Graphics, ReShades, Tools, and More — All Free for the FiveM Community.</p>
 
-    <!-- Verification Gate -->
     <div id="verifyGate">
       <h2>🔒 Access Locked</h2>
       <p>To access our graphics packs, you must verify inside the <strong>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</strong> Discord.</p>
@@ -167,6 +231,17 @@
   <script>
     const checkbox = document.getElementById("verifyCheck");
     const button = document.getElementById("downloadBtn");
+    const popup = document.getElementById("bundlePopup");
+    const closePopup = document.getElementById("closePopup");
+
+    document.getElementById("getBundle").addEventListener("click", (e) => {
+      e.preventDefault();
+      popup.style.display = "block";
+    });
+
+    closePopup.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
 
     checkbox.addEventListener("change", () => {
       button.disabled = !checkbox.checked;

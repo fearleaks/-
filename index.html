@@ -36,96 +36,27 @@
     .rise { animation: floatUp .7s ease-out both }
     /* Focus ring */
     :focus-visible { outline: 2px solid #9433F7; outline-offset: 2px; }
-
-    /* --- Tilt card + glare styles --- */
-    .tilt {
-      transform-style: preserve-3d;
-      will-change: transform;
-      transition: transform 300ms cubic-bezier(.2,.9,.3,1), box-shadow 300ms;
-      position: relative;
-      overflow: hidden;
-      cursor: none; /* so the custom cursor is visible when hovering tiltable items */
-    }
-    .tilt .tilt-glare {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 200%;
-      height: 200%;
-      pointer-events: none;
-      transform: translate3d(-50%, -50%, 0) rotate(0deg);
-      opacity: 0;
-      transition: opacity 200ms ease;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.30), rgba(255,255,255,0) 30%);
-      mix-blend-mode: screen;
-      filter: blur(12px);
-      z-index: 2;
-    }
-
-    /* make sure inner content remains above glare for readability */
-    .tilt > * { position: relative; z-index: 3; }
-
-    /* --- Custom cursor --- */
-    body.show-custom-cursor { cursor: none; } /* hide native cursor */
-    #custom-cursor {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 40px;
-      height: 40px;
-      pointer-events: none;
-      transform: translate(-50%, -50%) scale(1);
-      background-image: url('https://imgur.com/N2O0yyX.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      border-radius: 8px;
-      z-index: 99999;
-      transition: transform 120ms linear, box-shadow 120ms linear, width 120ms, height 120ms;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-      mix-blend-mode: normal;
-    }
-    #custom-cursor.hover {
-      transform: translate(-50%, -50%) scale(1.5);
-      box-shadow: 0 12px 30px rgba(148,51,247,0.35);
-    }
-    /* small ring for click feedback */
-    #custom-cursor.click-anim {
-      transform: translate(-50%, -50%) scale(1.9);
-      transition: transform 180ms cubic-bezier(.2,.8,.2,1);
-    }
-
-    /* when touch device - hide custom cursor container in JS */
-    @media (hover: none), (pointer: coarse) {
-      #custom-cursor { display: none !important; }
-      body { cursor: auto !important; }
-    }
-
-    /* subtle interactive highlight for buttons/links */
-    .interactive-hover { transition: transform 150ms ease, box-shadow 150ms ease; }
-    .interactive-hover:hover { transform: translateY(-3px); }
-
   </style>
 </head>
 <body class="min-h-screen bg-neutral-950 text-white selection:bg-brand-300/30">
   <!-- Header / Nav -->
   <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/60 bg-neutral-950/90 border-b border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group interactive-hover">
+      <a href="#" class="flex items-center gap-3 group">
         <img src="https://imgur.com/N2O0yyX.png" alt="Phantom Logo" class="h-9 w-9 rounded-xl object-cover">
         <span class="text-lg sm:text-xl font-semibold tracking-tight">Phantom <span class="text-brand-400">Services</span></span>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
-        <a href="#services" class="hover:text-white interactive-hover">Services</a>
-        <a href="#pricing" class="hover:text-white interactive-hover">Pricing</a>
-        <a href="#catalog" class="hover:text-white interactive-hover">Catalog</a>
-        <a href="#faq" class="hover:text-white interactive-hover">FAQ</a>
-        <a href="#payments" class="hover:text-white interactive-hover">Payments</a>
+        <a href="#services" class="hover:text-white">Services</a>
+        <a href="#pricing" class="hover:text-white">Pricing</a>
+        <a href="#catalog" class="hover:text-white">Catalog</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="#payments" class="hover:text-white">Payments</a>
       </nav>
       <div class="flex items-center gap-2">
-        <button id="themeToggle" class="rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/5 interactive-hover" aria-label="Toggle theme">🌓</button>
+        <button id="themeToggle" class="rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/5" aria-label="Toggle theme">🌓</button>
         <!-- Contact goes to Discord -->
-        <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="hidden sm:inline-block rounded-xl bg-brand-500 hover:bg-brand-600 px-4 py-2 text-sm font-semibold text-neutral-950 interactive-hover">Contact</a>
+        <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="hidden sm:inline-block rounded-xl bg-brand-500 hover:bg-brand-600 px-4 py-2 text-sm font-semibold text-neutral-950">Contact</a>
       </div>
     </div>
   </header>
@@ -144,8 +75,8 @@
         </h1>
         <p class="mt-5 text-white/70 max-w-xl">Phantom Services is your one-stop shop for fast, reliable, and secure digital solutions. Transparent pricing, instant delivery, and dedicated support.</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#catalog" class="rounded-xl bg-white text-neutral-950 px-5 py-3 font-semibold hover:bg-white/90 interactive-hover">Browse Catalog</a>
-          <a href="#pricing" class="rounded-xl border border-white/15 px-5 py-3 font-semibold hover:bg-white/5 interactive-hover">See Pricing</a>
+          <a href="#catalog" class="rounded-xl bg-white text-neutral-950 px-5 py-3 font-semibold hover:bg-white/90">Browse Catalog</a>
+          <a href="#pricing" class="rounded-xl border border-white/15 px-5 py-3 font-semibold hover:bg-white/5">See Pricing</a>
         </div>
         <dl class="mt-8 grid grid-cols-3 gap-4 max-w-md text-center">
           <div class="rounded-2xl border border-white/10 p-4">
@@ -167,20 +98,20 @@
           <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-brand-700 rounded-2xl blur opacity-30"></div>
           <div class="relative rounded-2xl border border-white/10 bg-neutral-900/60 p-4">
             <div class="grid grid-cols-2 gap-4">
-              <!-- Feature cards (add tilt if you want them to tilt too) -->
-              <div class="rounded-xl border border-white/10 p-4 tilt">
+              <!-- Feature cards -->
+              <div class="rounded-xl border border-white/10 p-4">
                 <h3 class="font-semibold">Automation</h3>
                 <p class="text-sm text-white/60 mt-1">Save time with scripts and bots.</p>
               </div>
-              <div class="rounded-xl border border-white/10 p-4 tilt">
+              <div class="rounded-xl border border-white/10 p-4">
                 <h3 class="font-semibold">Accounts</h3>
                 <p class="text-sm text-white/60 mt-1">Quality-checked stock.</p>
               </div>
-              <div class="rounded-xl border border-white/10 p-4 tilt">
+              <div class="rounded-xl border border-white/10 p-4">
                 <h3 class="font-semibold">Integrations</h3>
                 <p class="text-sm text-white/60 mt-1">Plug into your stack.</p>
               </div>
-              <div class="rounded-xl border border-white/10 p-4 tilt">
+              <div class="rounded-xl border border-white/10 p-4">
                 <h3 class="font-semibold">Security</h3>
                 <p class="text-sm text-white/60 mt-1">Safe payments & delivery.</p>
               </div>
@@ -242,7 +173,7 @@
     </div>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="tilt rounded-2xl border border-white/10 bg-neutral-900/50 p-6 rise">
+      <div class="rounded-2xl border border-white/10 bg-neutral-900/50 p-6 rise">
         <h3 class="text-xl font-semibold">Starter</h3>
         <p class="mt-1 text-white/60">For quick, one-off needs.</p>
         <div class="mt-4 text-3xl font-bold">$9<span class="text-base font-medium text-white/60">/mo</span></div>
@@ -251,10 +182,10 @@
           <li>• Basic support</li>
           <li>• Instant delivery</li>
         </ul>
-        <button type="button" data-plan="Starter" class="open-plan mt-6 inline-block w-full rounded-xl bg-white text-neutral-900 px-4 py-2.5 text-center font-semibold hover:bg-white/90 interactive-hover">Choose Starter</button>
+        <button type="button" data-plan="Starter" class="open-plan mt-6 inline-block w-full rounded-xl bg-white text-neutral-900 px-4 py-2.5 text-center font-semibold hover:bg-white/90">Choose Starter</button>
       </div>
 
-      <div class="tilt rounded-2xl border border-brand-500/30 bg-neutral-900/60 p-6 ring-2 ring-brand-500/30 rise md:delay-75">
+      <div class="rounded-2xl border border-brand-500/30 bg-neutral-900/60 p-6 ring-2 ring-brand-500/30 rise md:delay-75">
         <div class="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 text-xs text-white/80">Most Popular</div>
         <h3 class="mt-3 text-xl font-semibold">Pro</h3>
         <p class="mt-1 text-white/60">Best for power users.</p>
@@ -264,10 +195,10 @@
           <li>• Priority support</li>
           <li>• Team dashboard</li>
         </ul>
-        <button type="button" data-plan="Pro" class="open-plan mt-6 inline-block w-full rounded-xl bg-brand-500 text-neutral-950 px-4 py-2.5 text-center font-semibold hover:bg-brand-600 interactive-hover">Choose Pro</button>
+        <button type="button" data-plan="Pro" class="open-plan mt-6 inline-block w-full rounded-xl bg-brand-500 text-neutral-950 px-4 py-2.5 text-center font-semibold hover:bg-brand-600">Choose Pro</button>
       </div>
 
-      <div class="tilt rounded-2xl border border-white/10 bg-neutral-900/50 p-6 rise md:delay-150">
+      <div class="rounded-2xl border border-white/10 bg-neutral-900/50 p-6 rise md:delay-150">
         <h3 class="text-xl font-semibold">Enterprise</h3>
         <p class="mt-1 text-white/60">Custom solutions for teams.</p>
         <div class="mt-4 text-3xl font-bold">Custom</div>
@@ -276,7 +207,7 @@
           <li>• SLA & onboarding</li>
           <li>• Dedicated manager</li>
         </ul>
-        <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="mt-6 inline-block w-full rounded-xl border border-white/10 px-4 py-2.5 text-center font-semibold hover:bg-white/5 interactive-hover">Contact Sales</a>
+        <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="mt-6 inline-block w-full rounded-xl border border-white/10 px-4 py-2.5 text-center font-semibold hover:bg-white/5">Contact Sales</a>
       </div>
     </div>
   </section>
@@ -309,7 +240,7 @@
           <button class="copy-btn rounded-lg border border-white/10 px-2 py-1 text-xs hover:bg-white/5" data-copy="your-paypal@example.com">Copy</button>
         </div>
         <!-- Or use PayPal.me link -->
-        <a class="mt-3 inline-block rounded-xl bg-white text-neutral-900 px-3 py-2 text-sm font-semibold hover:bg-white/90 interactive-hover" href="https://www.paypal.com/paypalme/yourname" target="_blank">Open PayPal</a>
+        <a class="mt-3 inline-block rounded-xl bg-white text-neutral-900 px-3 py-2 text-sm font-semibold hover:bg-white/90" href="https://www.paypal.com/paypalme/yourname" target="_blank">Open PayPal</a>
         <!-- Replace email & paypalme -->
       </div>
 
@@ -387,7 +318,7 @@
     <div class="rounded-2xl border border-white/10 bg-neutral-900/60 p-6 text-center">
       <h2 class="text-2xl font-semibold">Contact Us</h2>
       <p class="mt-2 text-white/70">For support or custom requests, join our Discord and open a ticket.</p>
-      <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="mt-5 inline-block rounded-xl bg-brand-500 hover:bg-brand-600 px-5 py-3 font-semibold text-neutral-950 interactive-hover">Join Discord</a>
+      <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="mt-5 inline-block rounded-xl bg-brand-500 hover:bg-brand-600 px-5 py-3 font-semibold text-neutral-950">Join Discord</a>
       <p class="mt-3 text-xs text-white/50">By contacting us, you agree to our Terms & Privacy.</p>
     </div>
   </section>
@@ -396,9 +327,9 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
       <div>© <span id="year"></span> Phantom Services. All rights reserved.</div>
       <div class="flex items-center gap-4">
-        <a href="#" class="hover:text-white interactive-hover">Terms</a>
-        <a href="#" class="hover:text-white interactive-hover">Privacy</a>
-        <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="hover:text-white interactive-hover">Discord</a>
+        <a href="#" class="hover:text-white">Terms</a>
+        <a href="#" class="hover:text-white">Privacy</a>
+        <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="hover:text-white">Discord</a>
       </div>
     </div>
   </footer>
@@ -419,8 +350,8 @@
         <label class="text-sm text-white/70">Copy & paste this in your ticket:</label>
         <textarea id="ticketMessage" class="mt-2 w-full rounded-xl border border-white/10 bg-neutral-950 p-3 text-sm" rows="5" readonly></textarea>
         <div class="mt-3 flex gap-2">
-          <button id="copyMsg" class="rounded-xl bg-white text-neutral-900 px-4 py-2 text-sm font-semibold hover:bg-white/90 interactive-hover">Copy Message</button>
-          <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="rounded-xl bg-brand-500 hover:bg-brand-600 px-4 py-2 text-sm font-semibold text-neutral-950 interactive-hover">Open Discord</a>
+          <button id="copyMsg" class="rounded-xl bg-white text-neutral-900 px-4 py-2 text-sm font-semibold hover:bg-white/90">Copy Message</button>
+          <a href="https://discord.gg/RCfD6VffCW" target="_blank" class="rounded-xl bg-brand-500 hover:bg-brand-600 px-4 py-2 text-sm font-semibold text-neutral-950">Open Discord</a>
         </div>
       </div>
       <p class="mt-4 text-xs text-white/50">Tip: Include your preferred payment method (CashApp, PayPal, SOL, LTC) for fastest processing.</p>
@@ -429,26 +360,21 @@
 
   <!-- Templates -->
   <template id="item-template">
-    <div class="tilt group rounded-2xl border border-white/10 bg-neutral-900/50 p-4 hover:border-brand-500/30 transition">
-      <div class="tilt-glare"></div>
+    <div class="group rounded-2xl border border-white/10 bg-neutral-900/50 p-4 hover:border-brand-500/30 transition">
       <div class="aspect-[16/10] rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center">
         <img src="https://imgur.com/N2O0yyX.png" alt="Item" class="h-full w-full object-contain p-4">
       </div>
       <h3 class="mt-3 font-semibold text-lg">Item Name</h3>
       <p class="mt-1 text-sm text-white/70">Short description of the item.</p>
       <div class="mt-3 flex items-center justify-between">
-        <span class="font-semibold price">$0.00</span>
-        <button class="rounded-xl border border-white/10 px-3 py-1.5 text-sm hover:bg-white/5 interactive-hover">Add to cart</button>
+        <span class="font-semibold">$0.00</span>
+        <button class="rounded-xl border border-white/10 px-3 py-1.5 text-sm hover:bg-white/5">Add to cart</button>
       </div>
     </div>
   </template>
 
-  <!-- Custom cursor element -->
-  <div id="custom-cursor" aria-hidden="true"></div>
-
   <!-- Scripts -->
   <script>
-    /* ---------- Core UI logic (keeps your original behavior) ---------- */
     // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -466,12 +392,10 @@
       }
       localStorage.setItem('ps-theme', mode);
     }
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        const next = (localStorage.getItem('ps-theme') || (preferDark? 'dark':'light')) === 'dark' ? 'light' : 'dark';
-        setTheme(next);
-      });
-    }
+    toggle.addEventListener('click', () => {
+      const next = (localStorage.getItem('ps-theme') || (preferDark? 'dark':'light')) === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+    });
 
     // Catalog demo data
     const items = [
@@ -492,11 +416,8 @@
         const node = tpl.content.cloneNode(true);
         node.querySelector('h3').textContent = item.name;
         node.querySelector('p').textContent = item.desc;
-        node.querySelector('.price').textContent = item.price === 0 ? 'Custom' : `$${item.price.toFixed(2)}`;
-        const root = node.querySelector('.tilt');
+        node.querySelector('span.font-semibold').textContent = item.price === 0 ? 'Custom' : `$${item.price.toFixed(2)}`;
         grid.appendChild(node);
-        // attach tilt to this newly added item
-        attachTilt(root);
       });
     }
     render(items);
@@ -514,7 +435,7 @@
     if (search) search.addEventListener('input', applyFilters);
     if (sort) sort.addEventListener('change', applyFilters);
 
-    /* ---------- Modal / Plan logic (keeps your existing behavior) ---------- */
+    // Plan modal
     const modal = document.getElementById('planModal');
     const closeModalBtn = document.getElementById('closeModal');
     const copyMsgBtn = document.getElementById('copyMsg');
@@ -547,19 +468,17 @@ I’m ready to proceed right away. Thank you!`;
       btn.addEventListener('click', ()=> openPlan(btn.dataset.plan));
     });
 
-    closeModalBtn && closeModalBtn.addEventListener('click', ()=>{
+    closeModalBtn.addEventListener('click', ()=>{
       modal.classList.add('hidden');
       modal.classList.remove('flex');
     });
-
-    modal && modal.addEventListener('click', (e)=>{
+    modal.addEventListener('click', (e)=>{
       if (e.target === modal) {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
       }
     });
-
-    copyMsgBtn && copyMsgBtn.addEventListener('click', ()=>{
+    copyMsgBtn.addEventListener('click', ()=>{
       navigator.clipboard.writeText(ticketMessage.value).then(()=>{
         copyMsgBtn.textContent = 'Copied!';
         setTimeout(()=> copyMsgBtn.textContent = 'Copy Message', 1200);
@@ -577,150 +496,6 @@ I’m ready to proceed right away. Thank you!`;
         });
       });
     });
-
-    /* ---------- Tilt & Glare + Custom Cursor Implementation ---------- */
-    (function(){
-      const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
-      const cursor = document.getElementById('custom-cursor');
-
-      // show/hide native cursor & use custom cursor on non-touch devices
-      if (!isTouch) {
-        document.body.classList.add('show-custom-cursor');
-        cursor.style.display = 'block';
-      } else {
-        // hide the custom cursor on touch devices
-        cursor.style.display = 'none';
-      }
-
-      // Cursor position update
-      let cx = window.innerWidth / 2, cy = window.innerHeight / 2;
-      let lastX = cx, lastY = cy;
-      document.addEventListener('mousemove', (e) => {
-        cx = e.clientX;
-        cy = e.clientY;
-        // position immediately (no delay) for snappy feel
-        cursor.style.left = cx + 'px';
-        cursor.style.top = cy + 'px';
-      });
-
-      // click feedback
-      document.addEventListener('mousedown', () => {
-        cursor.classList.add('click-anim');
-      });
-      document.addEventListener('mouseup', () => {
-        cursor.classList.remove('click-anim');
-      });
-
-      // interactive hover targets where cursor should grow/glow
-      const interactiveSelector = 'a, button, .open-plan, .copy-btn, .interactive-hover';
-      function addCursorHoverListeners() {
-        document.querySelectorAll(interactiveSelector).forEach(el=>{
-          el.addEventListener('mouseenter', ()=> cursor.classList.add('hover'));
-          el.addEventListener('mouseleave', ()=> cursor.classList.remove('hover'));
-        });
-      }
-      addCursorHoverListeners();
-
-      // if new interactive elements are added later, you can call addCursorHoverListeners() again.
-      // we'll re-run after render to attach to new catalog items:
-      const origRender = render;
-      // (render is already defined above; re-run hook)
-      // attach tilt to existing .tilt elements and to dynamically created ones
-      function attachTilt(el) {
-        if (!el) return;
-        // prevent double-binding
-        if (el.__tiltBound) return;
-        el.__tiltBound = true;
-
-        // add glare element if not present
-        let glare = el.querySelector('.tilt-glare');
-        if (!glare) {
-          glare = document.createElement('div');
-          glare.className = 'tilt-glare';
-          el.appendChild(glare);
-        }
-
-        let rect = null;
-        let raf = null;
-
-        function updateRect() { rect = el.getBoundingClientRect(); }
-
-        function onMove(e) {
-          if (!rect) updateRect();
-          // pointer coords relative to element
-          const px = (e.clientX - rect.left) / rect.width;
-          const py = (e.clientY - rect.top) / rect.height;
-
-          // rotation limits
-          const rotateMax = 10; // degrees
-          const rotateX = ( (py - 0.5) * rotateMax ); // vertical -> rotateX
-          const rotateY = ( (0.5 - px) * rotateMax ); // horizontal -> rotateY
-
-          // glare position (place relative to element)
-          const glareX = (px * 100);
-          const glareY = (py * 100);
-
-          // use rAF for smooth updates
-          if (raf) cancelAnimationFrame(raf);
-          raf = requestAnimationFrame(() => {
-            el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-            el.style.boxShadow = `${-rotateY*8}px ${rotateX*8}px 30px rgba(0,0,0,0.6)`;
-            glare.style.opacity = 1;
-            // move glare: position center of radial by using background-position via transform trick
-            glare.style.transform = `translate3d(${(glareX-50)}%, ${(glareY-50)}%, 0) rotate(${rotateY*0.5}deg)`;
-          });
-        }
-
-        function onEnter() {
-          updateRect();
-          el.style.transition = 'transform 160ms ease, box-shadow 160ms ease';
-          glare.style.opacity = 1;
-        }
-        function onLeave() {
-          if (raf) cancelAnimationFrame(raf);
-          el.style.transform = '';
-          el.style.boxShadow = '';
-          glare.style.opacity = 0;
-        }
-
-        el.addEventListener('mousemove', onMove);
-        el.addEventListener('mouseenter', onEnter);
-        el.addEventListener('mouseleave', onLeave);
-        // ensure rect updates on resize/scroll
-        window.addEventListener('resize', updateRect);
-        window.addEventListener('scroll', updateRect, true);
-      }
-
-      // Attach tilt to all already-present elements with .tilt
-      document.querySelectorAll('.tilt').forEach(attachTilt);
-
-      // Ensure newly rendered items (catalog) get the interactive cursor and tilt
-      // We replaced render above so re-run addCursorHoverListeners after initial render
-      addCursorHoverListeners();
-
-      // After catalog render, attach hover/cursor bindings to newly added buttons
-      // We overrode render earlier? No, rendering was defined above and called; we just call addCursorHoverListeners again.
-      // Also ensure mutation observer to catch new interactive elements
-      const mo = new MutationObserver((mutations) => {
-        for (const m of mutations) {
-          if (m.addedNodes && m.addedNodes.length) {
-            m.addedNodes.forEach(n => {
-              if (n.nodeType === 1) {
-                if (n.matches && n.matches('.tilt')) attachTilt(n);
-                n.querySelectorAll && n.querySelectorAll('.tilt').forEach(attachTilt);
-                // rebind interactive hover listeners for new nodes
-                n.querySelectorAll && n.querySelectorAll(interactiveSelector).forEach(el=>{
-                  el.addEventListener('mouseenter', ()=> cursor.classList.add('hover'));
-                  el.addEventListener('mouseleave', ()=> cursor.classList.remove('hover'));
-                });
-              }
-            });
-          }
-        }
-      });
-      mo.observe(document.body, { childList: true, subtree: true });
-
-    })();
   </script>
 </body>
 </html>

@@ -1,282 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phantom Services</title>
+  <meta name="description" content="Premium digital services, delivered fast. Phantom Services storefront." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%2300E2A3' d='M50 6c24 0 44 20 44 44S74 94 50 94 6 74 6 50 26 6 50 6Zm0 14c-17 0-30 13-30 30s13 30 30 30 30-13 30-30S67 20 50 20Z'/%3E%3Cpath fill='%2300E2A3' d='M50 30c11 0 20 9 20 20s-9 20-20 20-20-9-20-20 9-20 20-20Z' opacity='.2'/%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config (optional brand colors)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ECFEF7',
+              100: '#D4FBEA',
+              200: '#A9F6D5',
+              300: '#77EEBF',
+              400: '#49E4AA',
+              500: '#1CD993',
+              600: '#10B981',
+              700: '#0E966A',
+              800: '#0B7453',
+              900: '#085B42'
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://i.imgur.com/rinn2vI.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      overflow-x: hidden;
-    }
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.75);
-      padding: 60px 30px;
-      min-height: 100vh;
-      text-align: center;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
-      font-weight: bold;
-    }
-    .popup {
-      background: #222;
-      padding: 15px 25px;
-      border: 1px solid #555;
-      display: inline-block;
-      margin-bottom: 30px;
-      font-size: 1.1em;
-      border-radius: 10px;
-    }
-    .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 25px;
-      background-color: #00c6ff;
-      border: none;
-      color: white;
-      font-size: 1.2em;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: background 0.3s;
-      text-decoration: none;
-    }
-    .btn:hover {
-      background-color: #007eaa;
-    }
-    .section {
-      margin: 50px auto;
-      max-width: 800px;
-      background: rgba(0,0,0,0.6);
-      padding: 30px;
-      border-radius: 15px;
-    }
-    .section h2 {
-      font-size: 2em;
-      margin-bottom: 15px;
-    }
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      font-size: 0.9em;
-      text-align: center;
-    }
-    footer a {
-      color: #00c6ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    #verifyGate {
-      background: rgba(0,0,0,0.4);
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 40px;
-      color: white;
-      max-width: 600px;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    #verifyGate h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-    #verifyGate p {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-    #verifyGate label {
-      display: inline-block;
-      margin-bottom: 15px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    #verifyGate input[type="checkbox"] {
-      margin-right: 10px;
-      transform: scale(1.3);
-      vertical-align: middle;
-      cursor: pointer;
-    }
-    #downloadBtn {
-      padding: 10px 25px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background-color: #999;
-      color: black;
-      cursor: not-allowed;
-      transition: background-color 0.3s ease;
-    }
-    /* Top-right bundle button */
-    #getBundle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #00c6ff;
-      padding: 10px 20px;
-      color: white;
-      font-size: 1.1em;
-      cursor: pointer;
-      border-radius: 8px;
-      text-decoration: none;
-      z-index: 1000;
-    }
-    /* Top-left watermark button */
-    #watermarkBtn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background-color: #00c6ff;
-      padding: 10px 20px;
-      color: white;
-      font-size: 1.1em;
-      cursor: pointer;
-      border-radius: 8px;
-      text-decoration: none;
-      z-index: 1000;
-    }
-    /* Popup Styles */
-    #bundlePopup {
-      display: none;
-      position: fixed;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #333;
-      padding: 25px;
-      border-radius: 10px;
-      color: white;
-      max-width: 80%;
-      z-index: 9999;
-    }
-    #bundlePopup h2 {
-      margin-bottom: 15px;
-    }
-    #bundlePopup ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    #bundlePopup li {
-      margin-bottom: 10px;
-    }
-    #closePopup {
-      background-color: #ff4d4d;
-      padding: 8px 15px;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-      border: none;
-    }
+    /* Subtle entrance animation */
+    @keyframes floatUp { from {opacity: 0; transform: translateY(12px)} to {opacity: 1; transform: translateY(0)} }
+    .rise { animation: floatUp .7s ease-out both }
+
+    /* Simple focus ring for a11y on non-TW elements */
+    :focus-visible { outline: 2px solid #10B981; outline-offset: 2px; }
   </style>
 </head>
-<body>
-  <!-- Watermark Button -->
-  <button id="watermarkBtn">Download Watermark</button>
+<body class="min-h-screen bg-neutral-950 text-white selection:bg-brand-300/30">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/60 bg-neutral-950/90 border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-emerald-400 text-neutral-950 font-black">Φ</span>
+        <span class="text-lg sm:text-xl font-semibold tracking-tight">Phantom <span class="text-brand-400">Services</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+        <a href="#services" class="hover:text-white">Services</a>
+        <a href="#pricing" class="hover:text-white">Pricing</a>
+        <a href="#catalog" class="hover:text-white">Catalog</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="rounded-xl border border-white/10 px-3 py-2 text-sm hover:bg-white/5" aria-label="Toggle theme">🌓</button>
+        <a href="#contact" class="hidden sm:inline-block rounded-xl bg-brand-500 hover:bg-brand-600 px-4 py-2 text-sm font-semibold text-neutral-950">Contact</a>
+      </div>
+    </div>
+  </header>
 
-  <!-- Bundle Popup -->
-  <a href="#" id="getBundle">Get ꜰͥᴇͣᴀͫʀ BUNDLE FOR FREE</a>
-  <div id="bundlePopup">
-    <h2>Get the ꜰͥᴇͣᴀͫʀ Bundle:</h2>
-    <ul>
-      <li><strong>Reshade:</strong> <a href="https://www.mediafire.com/file/jdeonx77nqsgpff/i+fear.ini/file" target="_blank">Download Reshade</a></li>
-      <li><strong>Graphic Pack:</strong> <a href="https://www.mediafire.com/file/8blsgaynj04sxyb/ꜰͥᴇͣᴀͫʀ+GP.rar/file" target="_blank">Download Graphic Pack</a></li>
-      <li><strong>KillFX:</strong> <a href="https://www.mediafire.com/file/8blsgaynj04sxyb/ꜰͥᴇͣᴀͫʀ+GP.rar/file" target="_blank">Download KillFX</a></li>
-      <li><strong>F8 Commands:</strong>
-        <pre>bind keyboard "3" "me ¦ ~r~POPING ~s~THIS PERK BITCH¦"</pre>
-        <pre>bind keyboard "R" "me ¦ ~r~RELOADING ~s~ BITCH¦"</pre>
-        <pre>bind keyboard "e" "e think5"</pre>
-        <pre>bind keyboard "e" "me ¦ ~r~ ꜰͥᴇͣᴀͫʀ | 𝙄𝙉𝘾 ~s~Did It To You¦"</pre>
-      </li>
-    </ul>
-    <button id="closePopup">Close</button>
-  </div>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl"></div>
+      <div class="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-emerald-400/20 blur-3xl"></div>
+    </div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+      <div class="rise">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight">Premium digital services, delivered <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-emerald-300">instantly</span>.</h1>
+        <p class="mt-5 text-white/70 max-w-xl">Phantom Services is your one‑stop shop for fast, reliable, and secure digital solutions. Transparent pricing, instant delivery, and dedicated support.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#catalog" class="rounded-xl bg-white text-neutral-950 px-5 py-3 font-semibold hover:bg-white/90">Browse Catalog</a>
+          <a href="#pricing" class="rounded-xl border border-white/15 px-5 py-3 font-semibold hover:bg-white/5">See Pricing</a>
+        </div>
+        <dl class="mt-8 grid grid-cols-3 gap-4 max-w-md text-center">
+          <div class="rounded-2xl border border-white/10 p-4">
+            <dt class="text-xs uppercase tracking-wider text-white/50">Delivery</dt>
+            <dd class="text-lg font-semibold">Instant</dd>
+          </div>
+          <div class="rounded-2xl border border-white/10 p-4">
+            <dt class="text-xs uppercase tracking-wider text-white/50">Support</dt>
+            <dd class="text-lg font-semibold">24/7</dd>
+          </div>
+          <div class="rounded-2xl border border-white/10 p-4">
+            <dt class="text-xs uppercase tracking-wider text-white/50">Refunds</dt>
+            <dd class="text-lg font-semibold">Guaranteed*</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="rise md:delay-100">
+        <div class="relative">
+          <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-emerald-500 rounded-2xl blur opacity-30"></div>
+          <div class="relative rounded-2xl border border-white/10 bg-neutral-900/60 p-4">
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Feature cards -->
+              <div class="rounded-xl border border-white/10 p-4">
+                <h3 class="font-semibold">Automation</h3>
+                <p class="text-sm text-white/60 mt-1">Save time with scripts and bots.</p>
+              </div>
+              <div class="rounded-xl border border-white/10 p-4">
+                <h3 class="font-semibold">Accounts</h3>
+                <p class="text-sm text-white/60 mt-1">Quality-checked stock.</p>
+              </div>
+              <div class="rounded-xl border border-white/10 p-4">
+                <h3 class="font-semibold">Integrations</h3>
+                <p class="text-sm text-white/60 mt-1">Plug into your stack.</p>
+              </div>
+              <div class="rounded-xl border border-white/10 p-4">
+                <h3 class="font-semibold">Security</h3>
+                <p class="text-sm text-white/60 mt-1">Safe payments & delivery.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="overlay">
-    <div class="popup">
-      🎉 Welcome to <strong>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</strong> — Your #1 Spot for Free FiveM Graphics, Tools & FX!
+  <!-- Services Highlights -->
+  <section id="services" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl border border-white/10 p-6 bg-neutral-900/40 rise">
+        <div class="text-2xl">⚡</div>
+        <h3 class="mt-3 font-semibold text-xl">Instant Fulfilment</h3>
+        <p class="mt-2 text-white/70">Automated delivery with clear on‑screen instructions after checkout.</p>
+      </div>
+      <div class="rounded-2xl border border-white/10 p-6 bg-neutral-900/40 rise md:delay-75">
+        <div class="text-2xl">🛡️</div>
+        <h3 class="mt-3 font-semibold text-xl">Secure Payments</h3>
+        <p class="mt-2 text-white/70">Multiple gateways supported with anti‑fraud protections.</p>
+      </div>
+      <div class="rounded-2xl border border-white/10 p-6 bg-neutral-900/40 rise md:delay-150">
+        <div class="text-2xl">🎧</div>
+        <h3 class="mt-3 font-semibold text-xl">Dedicated Support</h3>
+        <p class="mt-2 text-white/70">Priority assistance via Discord and email. SLA available for teams.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog -->
+  <section id="catalog" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight">Catalog</h2>
+        <p class="text-white/70 mt-2">Popular items from Phantom Services. Replace with your real offerings.</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <input id="catalogSearch" type="search" placeholder="Search catalog" class="w-48 sm:w-64 rounded-xl border border-white/10 bg-neutral-900/60 px-3 py-2 text-sm" />
+        <select id="catalogSort" class="rounded-xl border border-white/10 bg-neutral-900/60 px-3 py-2 text-sm">
+          <option value="featured">Featured</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+        </select>
+      </div>
     </div>
 
-    <h1>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</h1>
-    <p>Elite Graphics, ReShades, Tools, and More — All Free for the FiveM Community.</p>
+    <div id="catalogGrid" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Item template clones into here -->
+    </div>
+  </section>
 
-    <div id="verifyGate">
-      <h2>🔒 Access Locked</h2>
-      <p>To access our graphics packs, you must verify inside the <strong>ꜰͥᴇͣᴀͫʀʟɛǟӄֆ</strong> Discord.</p>
-      <label>
-        <input type="checkbox" id="verifyCheck" />
-        I am verified in the Discord server
-      </label>
-      <br />
-      <button id="downloadBtn" disabled>
-        ✅ Join & Verify
-      </button>
+  <!-- Pricing -->
+  <section id="pricing" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold tracking-tight">Simple Pricing</h2>
+      <p class="mt-2 text-white/70">Transparent plans for individuals and teams. No hidden fees.</p>
     </div>
 
-    <div class="section">
-      <h2>🛠️ How to Install</h2>
-      <p>All files come with README.txt, but basic install is just drag & drop into your FiveM directory or mods folder. ReShade files need ReShade installed first.</p>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-2xl border border-white/10 bg-neutral-900/50 p-6 rise">
+        <h3 class="text-xl font-semibold">Starter</h3>
+        <p class="mt-1 text-white/60">For quick, one‑off needs.</p>
+        <div class="mt-4 text-3xl font-bold">$9<span class="text-base font-medium text-white/60">/mo</span></div>
+        <ul class="mt-4 space-y-2 text-sm text-white/80">
+          <li>• 5 items / month</li>
+          <li>• Basic support</li>
+          <li>• Instant delivery</li>
+        </ul>
+        <a href="#" class="mt-6 inline-block w-full rounded-xl bg-white text-neutral-900 px-4 py-2.5 text-center font-semibold hover:bg-white/90">Choose Starter</a>
+      </div>
+      <div class="rounded-2xl border border-brand-500/30 bg-neutral-900/60 p-6 ring-2 ring-brand-500/30 rise md:delay-75">
+        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 text-xs text-white/80">Most Popular</div>
+        <h3 class="mt-3 text-xl font-semibold">Pro</h3>
+        <p class="mt-1 text-white/60">Best for power users.</p>
+        <div class="mt-4 text-3xl font-bold">$19<span class="text-base font-medium text-white/60">/mo</span></div>
+        <ul class="mt-4 space-y-2 text-sm text-white/80">
+          <li>• 20 items / month</li>
+          <li>• Priority support</li>
+          <li>• Team dashboard</li>
+        </ul>
+        <a href="#" class="mt-6 inline-block w-full rounded-xl bg-brand-500 text-neutral-950 px-4 py-2.5 text-center font-semibold hover:bg-brand-600">Choose Pro</a>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-neutral-900/50 p-6 rise md:delay-150">
+        <h3 class="text-xl font-semibold">Enterprise</h3>
+        <p class="mt-1 text-white/60">Custom solutions for teams.</p>
+        <div class="mt-4 text-3xl font-bold">Custom</div>
+        <ul class="mt-4 space-y-2 text-sm text-white/80">
+          <li>• Unlimited items</li>
+          <li>• SLA & onboarding</li>
+          <li>• Dedicated manager</li>
+        </ul>
+        <a href="#contact" class="mt-6 inline-block w-full rounded-xl border border-white/10 px-4 py-2.5 text-center font-semibold hover:bg-white/5">Contact Sales</a>
+      </div>
     </div>
+  </section>
 
-    <div class="section">
-      <h2>📸 Previews</h2>
-      <p>Sneak peek of what's inside — visual enhancers, blood FX, sounds, UI mods, and more!</p>
-      <img src="https://i.imgur.com/5yHfhsE.png" alt="Preview" style="width:100%; border-radius: 10px; margin-top: 20px;" />
+  <!-- Testimonials -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="rounded-2xl border border-white/10 bg-neutral-900/40 p-6">
+        <blockquote class="text-white/80">“Lightning‑fast delivery and friendly support. Exactly what we needed.”</blockquote>
+        <figcaption class="mt-4 text-sm text-white/60">— Alex P., Creator</figcaption>
+      </figure>
+      <figure class="rounded-2xl border border-white/10 bg-neutral-900/40 p-6">
+        <blockquote class="text-white/80">“Great prices and a smooth checkout. Highly recommended.”</blockquote>
+        <figcaption class="mt-4 text-sm text-white/60">— Priya R., Entrepreneur</figcaption>
+      </figure>
+      <figure class="rounded-2xl border border-white/10 bg-neutral-900/40 p-6">
+        <blockquote class="text-white/80">“Reliable and secure. Phantom Services is our go‑to.”</blockquote>
+        <figcaption class="mt-4 text-sm text-white/60">— Marco D., Team Lead</figcaption>
+      </figure>
     </div>
+  </section>
 
-    <div class="section">
-      <h2>👑 Credits</h2>
-      <p><strong>Owner:</strong> ꜰͥᴇͣᴀͫʀ | 𝙄𝙉𝘾<br />
-         <strong>Co-Owner:</strong> draco </p>
+  <!-- FAQ -->
+  <section id="faq" class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16">
+    <h2 class="text-3xl font-bold tracking-tight text-center">FAQ</h2>
+    <div class="mt-8 divide-y divide-white/10 rounded-2xl border border-white/10 bg-neutral-900/50">
+      <details class="group p-6" open>
+        <summary class="flex cursor-pointer items-center justify-between text-left text-white/90">
+          <span>How fast is delivery?</span>
+          <span class="transition-transform group-open:-rotate-180">⌄</span>
+        </summary>
+        <p class="mt-3 text-white/70">Most items are delivered instantly after payment. Some services may require manual setup.</p>
+      </details>
+      <details class="group p-6">
+        <summary class="flex cursor-pointer items-center justify-between text-left text-white/90">
+          <span>What payment methods do you accept?</span>
+          <span class="transition-transform group-open:-rotate-180">⌄</span>
+        </summary>
+        <p class="mt-3 text-white/70">We support major cards and crypto payments. Invoices are available for business purchases.</p>
+      </details>
+      <details class="group p-6">
+        <summary class="flex cursor-pointer items-center justify-between text-left text-white/90">
+          <span>Do you offer refunds?</span>
+          <span class="transition-transform group-open:-rotate-180">⌄</span>
+        </summary>
+        <p class="mt-3 text-white/70">Yes. If an item is not as described or fails to work, contact us within 24 hours for a resolution.</p>
+      </details>
     </div>
+  </section>
 
-    <footer>
-      &copy; 2025 ꜰͥᴇͣᴀͫʀʟɛǟӄֆ. All rights reserved. Join our Discord: <a href="https://discord.gg/85YgY334mg" target="_blank" rel="noopener noreferrer">discord.gg/85YgY334mg</a>
-    </footer>
-  </div>
+  <!-- Contact -->
+  <section id="contact" class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="rounded-2xl border border-white/10 bg-neutral-900/60 p-6">
+      <h2 class="text-2xl font-semibold">Contact Us</h2>
+      <p class="mt-2 text-white/70">Have a question or need a custom quote? Send us a message and we’ll get back to you.</p>
+      <form class="mt-6 grid gap-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input type="text" placeholder="Your name" class="rounded-xl border border-white/10 bg-neutral-950 px-3 py-2" required>
+          <input type="email" placeholder="Email address" class="rounded-xl border border-white/10 bg-neutral-950 px-3 py-2" required>
+        </div>
+        <input type="text" placeholder="Subject" class="rounded-xl border border-white/10 bg-neutral-950 px-3 py-2" required>
+        <textarea placeholder="Message" rows="5" class="rounded-xl border border-white/10 bg-neutral-950 px-3 py-2" required></textarea>
+        <button type="submit" class="rounded-xl bg-brand-500 hover:bg-brand-600 px-4 py-2 font-semibold text-neutral-950">Send Message</button>
+      </form>
+      <p class="mt-3 text-xs text-white/50">By submitting, you agree to our Terms & Privacy.</p>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
+      <div>© <span id="year"></span> Phantom Services. All rights reserved.</div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-white">Terms</a>
+        <a href="#" class="hover:text-white">Privacy</a>
+        <a href="#" class="hover:text-white">Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Templates & Scripts -->
+  <template id="item-template">
+    <div class="group rounded-2xl border border-white/10 bg-neutral-900/50 p-4 hover:border-brand-500/30 transition">
+      <div class="aspect-[16/10] rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center text-4xl">🛍️</div>
+      <h3 class="mt-3 font-semibold text-lg">Item Name</h3>
+      <p class="mt-1 text-sm text-white/70">Short description of the item.</p>
+      <div class="mt-3 flex items-center justify-between">
+        <span class="font-semibold">$0.00</span>
+        <button class="rounded-xl border border-white/10 px-3 py-1.5 text-sm hover:bg-white/5">Add to cart</button>
+      </div>
+    </div>
+  </template>
 
   <script>
-    const checkbox = document.getElementById("verifyCheck");
-    const button = document.getElementById("downloadBtn");
-    const popup = document.getElementById("bundlePopup");
-    const closePopup = document.getElementById("closePopup");
-    const watermarkBtn = document.getElementById("watermarkBtn");
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Bundle Popup
-    document.getElementById("getBundle").addEventListener("click", (e) => {
-      e.preventDefault();
-      popup.style.display = "block";
+    // Theme toggle (dark / light)
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function setTheme(mode){
+      if(mode === 'light') {
+        document.body.classList.remove('bg-neutral-950','text-white');
+        document.body.classList.add('bg-white','text-neutral-900');
+        document.querySelectorAll('[class*="bg-neutral-900"]').forEach(el=>el.className = el.className.replaceAll('bg-neutral-900','bg-white'));
+        document.querySelectorAll('[class*="text-white"]').forEach(el=>el.className = el.className.replaceAll('text-white','text-neutral-900'));
+      } else {
+        location.reload(); // simplest way to reset classes for this demo
+      }
+      localStorage.setItem('ps-theme', mode);
+    }
+    toggle.addEventListener('click', () => {
+      const next = (localStorage.getItem('ps-theme') || (preferDark? 'dark':'light')) === 'dark' ? 'light' : 'dark';
+      setTheme(next);
     });
 
-    closePopup.addEventListener("click", () => {
-      popup.style.display = "none";
-    });
+    // Catalog demo data (replace with your real items)
+    const items = [
+      { name: 'Automation Bot', price: 14.99, desc: 'Streamline your workflow with our script.', emoji: '🤖' },
+      { name: 'Premium Account', price: 9.99, desc: 'Verified, quality‑checked account.', emoji: '🪪' },
+      { name: 'Data Enrichment', price: 24.99, desc: 'Clean and enhance your datasets.', emoji: '📊' },
+      { name: 'Discord Setup', price: 19.99, desc: 'Custom server setup & security.', emoji: '💬' },
+      { name: 'Consultation (30m)', price: 12.00, desc: 'Expert guidance for your project.', emoji: '🧠' },
+      { name: 'Custom Request', price: 0.00, desc: 'Describe what you need—we build it.', emoji: '✨' }
+    ];
 
-    // Watermark download
-    watermarkBtn.addEventListener("click", () => {
-      const link = document.createElement('a');
-      link.href = 'https://i.imgur.com/rinn2vI.jpeg';
-      link.download = 'watermark.jpeg';
-      link.click();
-    });
+    const grid = document.getElementById('catalogGrid');
+    const tpl = document.getElementById('item-template');
 
-    checkbox.addEventListener("change", () => {
-      button.disabled = !checkbox.checked;
-      button.style.backgroundColor = checkbox.checked ? '#facc15' : '#999';
-      button.style.cursor = checkbox.checked ? 'pointer' : 'not-allowed';
-    });
+    function render(list){
+      grid.innerHTML = '';
+      list.forEach(item => {
+        const node = tpl.content.cloneNode(true);
+        node.querySelector('h3').textContent = item.name;
+        node.querySelector('p').textContent = item.desc;
+        node.querySelector('span.font-semibold').textContent = item.price === 0 ? 'Custom' : `$${item.price.toFixed(2)}`;
+        node.querySelector('.aspect-\\[16\/10\\]').textContent = item.emoji;
+        grid.appendChild(node);
+      });
+    }
 
-    button.addEventListener("click", () => {
-      window.location.href = "https://discord.gg/85YgY334mg";
-    });
+    render(items);
+
+    // Search & Sort
+    const search = document.getElementById('catalogSearch');
+    const sort = document.getElementById('catalogSort');
+
+    function applyFilters(){
+      const q = (search.value || '').toLowerCase();
+      let list = items.filter(i => i.name.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q));
+      if (sort.value === 'low') list = list.sort((a,b)=>a.price-b.price);
+      if (sort.value === 'high') list = list.sort((a,b)=>b.price-a.price);
+      render(list);
+    }
+
+    search.addEventListener('input', applyFilters);
+    sort.addEventListener('change', applyFilters);
   </script>
 </body>
 </html>
